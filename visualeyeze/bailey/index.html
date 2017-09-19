@@ -1,0 +1,98 @@
+<html>
+ <head>
+  <title>xLabs: Gaze Tracking "Balloons" Demo</title>
+ </head>
+ <body>
+     <script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-53017531-1', 'auto');
+    ga('send', 'pageview');
+
+     </script>
+
+  <div id="about">
+   <h1>Calibration of Webcam</h1>
+   <!-- <p>Click coloured balloons to "pop" them. The clicks will be used to calibrate gaze tracking.</p>
+   <p>When the system is calibrated, you can pop balloons simply by looking at them!</p>
+   <p>Keep clicking for more accurate gaze tracking. Pop all the balloons to win the game.</p> -->
+   <button id="start" style="color: #FFF; background-color: #900; border: 1px solid #900; font-weight: bold;font-size: 150%; text-transform: uppercase; margin: 20px; z-index:999; position:relative">Start</button>
+  </div>
+
+  <div id="win" style="display:none; text-align:center; font-weight: bold; font-family:Monospace; font-size:3.0em;">
+   <h1>YOU WIN!</h1>
+   <p>Refresh page to play again.</p>
+  </div>
+
+  <div id="graph">
+  </div>
+
+   <div id="shape" style="position: absolute;"></div>
+
+   <div id="catdiv" style="width:100%; height:100%; position:absolute; background: url(cat.jpeg); background-size: 100%; background-repeat: no-repeat;">
+    <!-- <img src="cat.jpeg"> -->
+  </div>
+
+   <div id="heatmapContainerWrapper" style="width:100%; height:100%; opacity: 0.5;">
+    <div id="heatmapContainer" style="width:100%; height:100%;">
+    </div>
+  </div>
+
+  
+
+
+  <script type="text/javascript" src="../colours/js/libs/d3.v3.min.js"> </script>
+  <script type="text/javascript" src="../colours/js/libs/queue.v1.min.js"> </script>
+  <script>window.jQuery || document.write('<script src="../colours/js/libs/jquery-1.6.2.min.js"><\/script>')</script>
+
+  <script src="../api/xlabs.js"></script>
+  <script type="text/javascript" src="../colours/graph.js"> </script>
+  <script type="text/javascript" src="../useful/mouse.js"> </script>
+  <script type="text/javascript" src="../useful/gaze.js"> </script>
+  <script type="text/javascript" src="../useful/util.js"> </script>
+
+  <script src="/build/heatmap.js"></script>
+  <script src="bailey.js"></script>
+   <!--  <script>
+   window.onload = function() {
+        create a heatmap instance
+        var heatmap = h337.create({
+          container: document.getElementById('heatmapContainer'),
+          maxOpacity: .6,
+          radius: 50,
+          blur: .90,
+          // backgroundColor with alpha so you can see through it
+          backgroundColor: 'rgba(0, 0, 58, 0.96)'
+        });
+        var heatmapContainer = document.getElementById('heatmapContainerWrapper');
+
+        heatmapContainer.onmousemove = heatmapContainer.ontouchmove = function(e) {
+          // we need preventDefault for the touchmove
+          e.preventDefault();
+          var x = e.layerX;
+          var y = e.layerY;
+          if (e.touches) {
+            x = e.touches[0].pageX;
+            y = e.touches[0].pageY;
+          }
+          
+          heatmap.addData({ x: x, y: y, value: 1 });
+
+        };
+
+        heatmapContainer.onclick = function(e) {
+          var x = e.layerX;
+          var y = e.layerY;
+          heatmap.addData({ x: x, y: y, value: 1 });
+        };
+
+      };
+    </script> -->
+ </body>
+</html>
+
