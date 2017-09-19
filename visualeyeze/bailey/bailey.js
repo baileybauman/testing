@@ -110,7 +110,7 @@ var Shapes = {
       //stop update interval
       clearInterval(Shapes.interval);
       //show next image
-      // Shapes.showNextImage();
+      setTimeout(Shapes.showNextImage, 10000);
     }
     //not done calibrating..
     else if(Shapes.calibrationComplete == false){
@@ -128,6 +128,7 @@ var Shapes = {
     if(Shapes.imageIndex < Shapes.images.length){
       Shapes.imageIndex = Shapes.imageIndex + 1;
       //update picture
+
       document.getElementById('catdiv').style.backgroundImage="url(" + Shapes.images[Shapes.imageIndex] + ")";
       //update heat map
       Gaze.update();
@@ -143,8 +144,18 @@ var Shapes = {
           ]
         };
         heatmap.setData(data);
+        document.getElementById( "heatmapContainerWrapper" ).style.display = "none";
+
+        // Deletes the current data
+        
       }
       //restart interval
+
+      Shapes.numPoints = 0;
+    // this updates the gaze every 150 milliseconds
+    var updateInterval = 150; //150!!!!
+    Shapes.interval = setInterval( Shapes.update, updateInterval );
+
     }
   },
 
